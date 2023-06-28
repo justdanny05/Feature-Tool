@@ -374,6 +374,9 @@ namespace Feature_Tool.Untermenüs
 
             // Verbindung zur Datenbank herstellen
 
+            Console.WriteLine("Datenbank:");
+            Console.WriteLine("--------------------------------\n\n");
+
             using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
 
@@ -392,18 +395,27 @@ namespace Feature_Tool.Untermenüs
                         using (MySqlDataReader reader = command.ExecuteReader())
                         {
 
-                            // Daten aus dem Reader lesen und anzeigen
-
-                            while (reader.Read())
+                            if (!reader.HasRows)
                             {
 
-                                int id = reader.GetInt32("id");
-                                string name = reader.GetString("Name");
-                                string passwort = reader.GetString("Passwort");
-
-                                Console.WriteLine($"ID: {id}, Name: {name}, Passwort: {passwort}");
+                                Console.WriteLine("LEER");
 
                             }
+                            else
+                            {
+
+                                while (reader.Read())
+                                {
+
+                                    int id = reader.GetInt32("id");
+                                    string name = reader.GetString("Name");
+                                    string passwort = reader.GetString("Passwort");
+
+                                    Console.WriteLine($"ID: {id}, Name: {name}, Passwort: {passwort}");
+
+                                }
+
+                            }                                                      
 
                         }
 

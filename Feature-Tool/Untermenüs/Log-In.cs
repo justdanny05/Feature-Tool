@@ -167,18 +167,28 @@ namespace Feature_Tool.Untermenüs
                                 using (MySqlDataReader reader = selectCommand.ExecuteReader())
                                 {
 
-                                    // Auf die Spaltenwerte zugreifen
-
-                                    while (reader.Read())
+                                    if (reader.Read())
                                     {
 
-                                        int id = reader.GetInt32(0);                    // Index 0 entspricht der ID-Spalte
-                                        string userName = reader.GetString(1);          // Index 1 entspricht der Name-Spalte
-                                        string password = reader.GetString(2);          // Index 2 entspricht der Passwort-Spalte
-
-                                        Console.WriteLine($"ID: {id}, Name: {userName}, Passwort: {password}");
+                                        Console.WriteLine("LEER");
 
                                     }
+
+                                    else
+                                    {
+
+                                        while (reader.Read())
+                                        {
+
+                                            int id = reader.GetInt32(0);                    // Index 0 entspricht der ID-Spalte
+                                            string userName = reader.GetString(1);          // Index 1 entspricht der Name-Spalte
+                                            string password = reader.GetString(2);          // Index 2 entspricht der Passwort-Spalte
+
+                                            Console.WriteLine($"ID: {id}, Name: {userName}, Passwort: {password}");
+
+                                        }
+
+                                    }                                   
 
                                 }
 
