@@ -27,7 +27,6 @@ class Hauptmenü
                               "1. Chef\n" +
                               "2. Mitarbeiter");
 
-            string eingabe;
 
             eingabe = Console.ReadLine();
 
@@ -70,7 +69,6 @@ class Hauptmenü
                 Console.ReadKey();
 
             }
-
 
         } while (schleife);
         
