@@ -41,21 +41,39 @@ namespace Feature_Tool.Untermenüs
                         connection.Open();
 
                         // SQL-Abfrage zum Auslesen der Daten
+
                         string query = "SELECT id, Name, Passwort FROM Benutzer";
 
                         using (MySqlCommand command = new MySqlCommand(query, connection))
                         {
                             using (MySqlDataReader reader = command.ExecuteReader())
                             {
-                                // Daten aus dem Reader lesen und anzeigen
-                                while (reader.Read())
+                                
+                                if (!reader.HasRows)
                                 {
-                                    int id = reader.GetInt32("id");
-                                    string name = reader.GetString("Name");
-                                    string passwort = reader.GetString("Passwort");
 
-                                    Console.WriteLine($"ID: {id}, Name: {name}, Passwort: {passwort}");
+                                    Console.WriteLine("LEER");
+
                                 }
+
+                                else
+                                {
+
+                                    // Daten aus dem Reader lesen und anzeigen
+
+                                    while (reader.Read())
+                                    {
+
+                                        int id = reader.GetInt32("id");
+                                        string name = reader.GetString("Name");
+                                        string passwort = reader.GetString("Passwort");
+
+                                        Console.WriteLine($"ID: {id}, Name: {name}, Passwort: {passwort}");
+
+                                    }
+
+                                }
+                                
                             }
                         }
 
