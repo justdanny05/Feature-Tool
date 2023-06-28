@@ -30,8 +30,7 @@ namespace Feature_Tool.Untermenüs
 
                 using (MySqlConnection connection = new MySqlConnection(connectionString))
                 {
-                    Console.WriteLine("Wollen Sie Einträge aus der Tabelle löschen? (ja/nein)\n");
-
+                    
                     Console.WriteLine("Gespeicherte Daten\n");
 
                     Console.WriteLine("------------------------------------------------------------\n");
@@ -70,7 +69,9 @@ namespace Feature_Tool.Untermenüs
                     }
 
                     Console.WriteLine("");
-                    Console.WriteLine("------------------------------------------------------------");
+                    Console.WriteLine("------------------------------------------------------------\n\n");
+
+                    Console.WriteLine("Wollen Sie Einträge aus der Tabelle löschen? (ja/nein)\n");
 
                     string eingabe = Console.ReadLine();
 
@@ -211,15 +212,216 @@ namespace Feature_Tool.Untermenüs
         internal static void Benutzerverwaltung()
         {
 
+            bool schleife;
+            string eingabe;
+            string name;
 
+            do
+            {
+
+                schleife = true;
+
+                Console.WriteLine("Was wollen Sie tun?\n");
+                Console.WriteLine("1. Passwort zurücksetzen\n" +
+                                  "2. Namen zurücksetzen");
+
+                eingabe = Console.ReadLine();
+
+                if (eingabe == "1")
+                {
+
+                    string connectionString = "Server=localhost;Port=3306;Database=LogIn;Uid=Danny;Pwd=DanDan-05K;";
+
+                    Console.Write("Bitte gib deinen Namen ein: ");
+                    name = Console.ReadLine();
+
+                    Console.Write("Bitte gib dein neues Passwort ein: ");
+                    string neuesPasswort = Console.ReadLine();
+
+                    using (MySqlConnection connection = new MySqlConnection(connectionString))
+                    {
+
+                        try
+                        {
+
+                            connection.Open();
+
+                            string updateQuery = "UPDATE Benutzer SET Passwort = @neuesPasswort WHERE Name = @name";
+
+                            using (MySqlCommand command = new MySqlCommand(updateQuery, connection))
+                            {
+
+                                command.Parameters.AddWithValue("@neuesPasswort", neuesPasswort);
+                                command.Parameters.AddWithValue("@name", name);
+
+                                int rowsAffected = command.ExecuteNonQuery();
+
+                                if (rowsAffected > 0)
+                                {
+
+                                    Console.WriteLine("Passwort erfolgreich zurückgesetzt!");
+                                    Console.ReadKey();
+
+                                }
+
+                                else
+                                {
+
+                                    Console.WriteLine("Ungültiger Benutzername. Passwort konnte nicht zurückgesetzt werden.");
+                                    Console.ReadKey();
+
+                                }
+
+                            }
+
+                        }
+
+                        catch (Exception ex)
+                        {
+
+                            Console.WriteLine("Fehler beim Zurücksetzen des Passworts: " + ex.Message);
+                            Console.ReadKey();
+
+                        }
+
+                    }
+
+                }
+
+                else if (eingabe == "2")
+                {
+
+                    string connectionString = "Server=localhost;Port=3306;Database=LogIn;Uid=Danny;Pwd=DanDan-05K;";
+
+                    Console.Write("Bitte gib den aktuellen Namen des Benutzers ein: ");
+                    string aktuellerName = Console.ReadLine();
+
+                    Console.Write("Bitte gib den neuen Namen für den Benutzer ein: ");
+                    string neuerName = Console.ReadLine();
+
+                    using (MySqlConnection connection = new MySqlConnection(connectionString))
+                    {
+
+                        try
+                        {
+
+                            connection.Open();
+
+                            string updateQuery = "UPDATE Benutzer SET Name = @neuerName WHERE Name = @aktuellerName";
+
+                            using (MySqlCommand command = new MySqlCommand(updateQuery, connection))
+                            {
+
+                                command.Parameters.AddWithValue("@neuerName", neuerName);
+                                command.Parameters.AddWithValue("@aktuellerName", aktuellerName);
+
+                                int rowsAffected = command.ExecuteNonQuery();
+
+                                if (rowsAffected > 0)
+                                {
+
+                                    Console.WriteLine("Name erfolgreich zurückgesetzt!");
+                                    Console.ReadKey();
+
+                                }
+
+                                else
+                                {
+
+                                    Console.WriteLine("Ungültiger Benutzername. Name konnte nicht zurückgesetzt werden.");
+                                    Console.ReadKey();
+
+                                }
+
+                            }
+
+                        }
+
+                        catch (Exception ex)
+                        {
+
+                            Console.WriteLine("Fehler beim Zurücksetzen des Namens: " + ex.Message);
+                            Console.ReadKey();
+
+                        }
+
+                    }
+
+                }
+
+                else
+                {
+
+                    // Falsche Eingabe
+
+                    schleife = false;
+
+                    Console.WriteLine(eingabe+ " ist eine falsche Eingabe\n" +
+                                               "Versuche es erneut.");
+
+                }
+
+            } while (!schleife);                    
 
         }
 
         internal static void Programmübersicht()
         {
 
+            // Verbindungsinformationen zur Datenbank
 
+            string connectionString = "Server=localhost;Port=3306;Database=LogIn;Uid=Danny;Pwd=DanDan-05K;";
 
+            // Verbindung zur Datenbank herstellen
+
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+
+                try
+                {
+
+                    connection.Open();
+
+                    // SQL-Abfrage zum Auslesen der Daten
+
+                    string query = "SELECT id, Name, Passwort FROM Benutzer";
+
+                    using (MySqlCommand command = new MySqlCommand(query, connection))
+                    {
+
+                        using (MySqlDataReader reader = command.ExecuteReader())
+                        {
+
+                            // Daten aus dem Reader lesen und anzeigen
+
+                            while (reader.Read())
+                            {
+
+                                int id = reader.GetInt32("id");
+                                string name = reader.GetString("Name");
+                                string passwort = reader.GetString("Passwort");
+
+                                Console.WriteLine($"ID: {id}, Name: {name}, Passwort: {passwort}");
+
+                            }
+
+                        }
+
+                    }
+
+                }
+
+                catch (Exception ex)
+                {
+
+                    Console.WriteLine("Fehler beim Auslesen der Daten: " + ex.Message);
+
+                }
+
+            }
+
+            Console.ReadKey();
+                       
         }
 
     }

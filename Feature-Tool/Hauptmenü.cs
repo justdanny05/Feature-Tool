@@ -24,8 +24,9 @@ class Hauptmenü
                                   "██║░╚═╝░██║███████╗██║░╚███║╚██████╔╝\r\n" +
                                   "╚═╝░░░░░╚═╝╚══════╝╚═╝░░╚══╝░╚═════╝░\n\n");
             
-            Console.WriteLine("1. Log-In\n" +
-                              "2. Administration");
+            Console.WriteLine("1. Log-In \t 2. Administration\n" +
+                              "-----------------------------------\n" +
+                              "    exit = Programm schließen");
 
             eingabe = Console.ReadLine();
 

@@ -113,6 +113,8 @@ namespace Feature_Tool.Untermenüs
 
                             } while (key.Key != ConsoleKey.Enter);
 
+                            Console.WriteLine();
+
                             if (passwort == passwort_erneut)
                             {
 
@@ -283,7 +285,15 @@ namespace Feature_Tool.Untermenüs
                             else
                             {
 
-                                Console.WriteLine("Ungültiger Benutzername oder Passwort.");
+                                Console.WriteLine("Ungültiger Benutzername. Du bist noch nicht registriert.");
+
+                                Console.Write("Möchtest du dich registrieren? (Ja/Nein): ");
+                                string antwort = Console.ReadLine();
+
+                                if (antwort.ToLower() == "ja")
+                                {
+                                    Registrierung(name, passwort);
+                                }
 
                             }
 
@@ -310,8 +320,36 @@ namespace Feature_Tool.Untermenüs
 
         }
 
-    }
+        internal static void Registrierung(string name, string passwort)                // Wenn man bei der Anmeldung merkt, dass man noch nicht registriert ist
+        {
+            string connectionString = "Server=localhost;Port=3306;Database=LogIn;Uid=Danny;Pwd=DanDan-05K;";
 
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+
+                    string insertQuery = "INSERT INTO Benutzer (Name, Passwort) VALUES (@name, @passwort)";
+
+                    using (MySqlCommand command = new MySqlCommand(insertQuery, connection))
+                    {
+                        command.Parameters.AddWithValue("@name", name);
+                        command.Parameters.AddWithValue("@passwort", passwort);
+                        command.ExecuteNonQuery();
+
+                        Console.WriteLine("Registrierung erfolgreich!");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Fehler bei der Registrierung: " + ex.Message);
+                }
+            }
+
+        }
+
+    }
 }
 
 
