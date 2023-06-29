@@ -134,7 +134,7 @@ class Hauptmenü
             else if (eingabe == "exit")
             {
 
-                Environment.Exit(0);            //Programm beendet
+                Environment.Exit(0);            //Programm beenden
 
             } 
 
