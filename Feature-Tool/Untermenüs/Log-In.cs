@@ -305,8 +305,8 @@ namespace Feature_Tool.Untermenüs
                             {
 
                                 Console.WriteLine();
-                                Console.WriteLine("Ungültiger Benutzername.\n" +
-                                                  "Du bist noch nicht registriert.");
+                                Console.WriteLine("Ungültiger Benutzername,\n" +
+                                                  "du bist noch nicht registriert.");
 
                                 Console.WriteLine();
                                 Console.Write("Möchtest du dich registrieren? (ja/nein): ");
