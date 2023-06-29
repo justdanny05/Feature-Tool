@@ -115,19 +115,24 @@ class Hauptmenü
 
                     }
 
+                    else if (eingabe == "back")
+                    {
+
+                        schleife =true;
+
+                    }
+
                     else
                     {
 
                         // Falsche Eingabe
-
-                        schleife = false;
 
                         Console.WriteLine("'" + eingabe + "' funktioniert nicht.\n" +
                                           "Versuche Sie es erneut");
 
                     }
 
-                } while (!schleife);
+                } while (schleife);
 
             }
 
