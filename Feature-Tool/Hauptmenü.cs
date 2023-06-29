@@ -24,9 +24,9 @@ class Hauptmenü
                                   "██║░╚═╝░██║███████╗██║░╚███║╚██████╔╝\r\n" +
                                   "╚═╝░░░░░╚═╝╚══════╝╚═╝░░╚══╝░╚═════╝░\n\n");
             
-            Console.WriteLine("1. Log-In \t 2. Administration\n" +
-                              "-----------------------------------\n" +
-                              "    exit = Programm schließen");
+            Console.WriteLine("1. Log-In \t 2. Administration\n\n" +
+                              "-----------------------------------\n\n" +
+                              "exit = Programm schließen\n\n");
 
             eingabe = Console.ReadLine();
 
@@ -70,28 +70,6 @@ class Hauptmenü
 
                 }
 
-                    else if (eingabe == "back")
-                    {
-
-                        schleife = false;
-
-            }
-
-                    else
-                    {
-
-                        // Falsche Eingabe
-
-
-                        Console.WriteLine(eingabe + " ist eine falsche Eingabe\n" +
-                            "Versuche es mit '1', '2' oder 'back'");
-
-                    }
-
-                } while(schleife);
-
-                schleife = true;
-
             }
 
             else if (eingabe == "2")
@@ -109,9 +87,7 @@ class Hauptmenü
                                       "2. Benutzerverwaltung\n"+
                                       "3. Programmübersicht");
 
-                    Console.WriteLine("------------------------------------------------------------\n\n" +
-                                      "" +
-                                      "'back' um zurück ins Hauptmenü zu kommen");
+                    Console.WriteLine("------------------------------------------------------------");
 
                     eingabe = Console.ReadLine();
 
@@ -139,24 +115,19 @@ class Hauptmenü
 
                     }
 
-                    else if (eingabe == "back")
-                    {
-
-                        schleife =true;
-
-                    }
-
                     else
                     {
 
                         // Falsche Eingabe
+
+                        schleife = false;
 
                         Console.WriteLine("'" + eingabe + "' funktioniert nicht.\n" +
                                           "Versuche Sie es erneut");
 
                     }
 
-                } while (schleife);
+                } while (!schleife);
 
             }
 

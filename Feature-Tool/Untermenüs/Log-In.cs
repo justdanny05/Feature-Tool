@@ -49,8 +49,8 @@ namespace Feature_Tool.Untermenüs
 
                         while (count > 0)
                         {
-                            Console.WriteLine("Der angegebene Name " + name + " existiert bereits.\n" +
-                                              "Bitte gib einen anderen Namen ein.");
+                            Console.WriteLine("Der angegebene Name: '" + name + "' existiert bereits.\n" +
+                                              "Bitte gib einen anderen Namen ein.\n");
                             Console.Write("Bitte gib deinen Namen ein: ");
                             name = Console.ReadLine();
 
@@ -58,7 +58,7 @@ namespace Feature_Tool.Untermenüs
                             count = Convert.ToInt32(checkname.ExecuteScalar());
                         }
 
-                        Console.Write("Bitte gib ein Passwort ein: ");
+                        Console.Write("Bitte vergib ein Passwort: ");
                         passwort = "";
 
                         do
@@ -129,6 +129,7 @@ namespace Feature_Tool.Untermenüs
 
                                 schleife = false;
 
+                                Console.WriteLine();
                                 Console.WriteLine("Das Passwort stimmt nicht überein...\n" +
                                                   "Bitte erneut versuchen");
 
@@ -155,6 +156,7 @@ namespace Feature_Tool.Untermenüs
 
                             }
 
+                            Console.WriteLine();
                             Console.WriteLine("Daten erfolgreich gespeichert!");
 
                             // SQL-Abfrage erstellen
@@ -170,7 +172,9 @@ namespace Feature_Tool.Untermenüs
                                     if (reader.Read())
                                     {
 
+                                        Console.WriteLine();
                                         Console.WriteLine("LEER");
+                                        Console.WriteLine();
 
                                     }
 
@@ -199,6 +203,7 @@ namespace Feature_Tool.Untermenüs
                         catch (Exception ex)
                         {
 
+                            Console.WriteLine();
                             Console.WriteLine("Fehler beim Speichern oder Abrufen der Daten: " + ex.Message);
 
                         }
@@ -210,6 +215,7 @@ namespace Feature_Tool.Untermenüs
                 catch (Exception ex)
                 {
 
+                    Console.WriteLine();
                     Console.WriteLine("Fehler bei der Registrierung: " + ex.Message);
 
                 }
@@ -236,10 +242,12 @@ namespace Feature_Tool.Untermenüs
 
                 // Eingabeaufforderungen für Name und Passwort
 
-                Console.WriteLine("Bitte gib deinen Namen ein:");
+                Console.Write("Bitte gib deinen Namen ein: ");
                 string name = Console.ReadLine();
 
-                Console.WriteLine("Bitte gib dein Passwort ein:");
+                Console.WriteLine();
+
+                Console.Write("Bitte gib dein Passwort ein: ");
                 string passwort = "";
                 ConsoleKeyInfo key;
 
@@ -288,6 +296,7 @@ namespace Feature_Tool.Untermenüs
                             if (count > 0)
                             {
 
+                                Console.WriteLine();
                                 Console.WriteLine("Anmeldung erfolgreich!");
 
                             }
@@ -295,14 +304,26 @@ namespace Feature_Tool.Untermenüs
                             else
                             {
 
-                                Console.WriteLine("Ungültiger Benutzername. Du bist noch nicht registriert.");
+                                Console.WriteLine();
+                                Console.WriteLine("Ungültiger Benutzername.\n" +
+                                                  "Du bist noch nicht registriert.");
 
-                                Console.Write("Möchtest du dich registrieren? (Ja/Nein): ");
+                                Console.WriteLine();
+                                Console.Write("Möchtest du dich registrieren? (ja/nein): ");
                                 string antwort = Console.ReadLine();
 
                                 if (antwort.ToLower() == "ja")
                                 {
+
                                     Registrierung(name, passwort);
+
+                                }
+
+                                else
+                                {
+
+
+
                                 }
 
                             }
@@ -318,6 +339,7 @@ namespace Feature_Tool.Untermenüs
 
                         schleife = false;
 
+                        Console.WriteLine();
                         Console.WriteLine("Fehler bei der Anmeldung: " + ex.Message);
 
                     }
@@ -332,34 +354,47 @@ namespace Feature_Tool.Untermenüs
 
         internal static void Registrierung(string name, string passwort)                // Wenn man bei der Anmeldung merkt, dass man noch nicht registriert ist
         {
+
             string connectionString = "Server=localhost;Port=3306;Database=LogIn;Uid=Danny;Pwd=DanDan-05K;";
 
             using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
+
                 try
                 {
+
                     connection.Open();
 
                     string insertQuery = "INSERT INTO Benutzer (Name, Passwort) VALUES (@name, @passwort)";
 
                     using (MySqlCommand command = new MySqlCommand(insertQuery, connection))
                     {
+
                         command.Parameters.AddWithValue("@name", name);
                         command.Parameters.AddWithValue("@passwort", passwort);
                         command.ExecuteNonQuery();
 
+                        Console.WriteLine();
                         Console.WriteLine("Registrierung erfolgreich!");
+
                     }
+
                 }
+
                 catch (Exception ex)
                 {
+
+                    Console.WriteLine();
                     Console.WriteLine("Fehler bei der Registrierung: " + ex.Message);
+
                 }
+
             }
 
         }
 
     }
+
 }
 
 
