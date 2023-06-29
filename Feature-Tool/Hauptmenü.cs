@@ -70,6 +70,28 @@ class Hauptmenü
 
                 }
 
+                    else if (eingabe == "back")
+                    {
+
+                        schleife = false;
+
+            }
+
+                    else
+                    {
+
+                        // Falsche Eingabe
+
+
+                        Console.WriteLine(eingabe + " ist eine falsche Eingabe\n" +
+                            "Versuche es mit '1', '2' oder 'back'");
+
+                    }
+
+                } while(schleife);
+
+                schleife = true;
+
             }
 
             else if (eingabe == "2")
@@ -87,7 +109,9 @@ class Hauptmenü
                                       "2. Benutzerverwaltung\n"+
                                       "3. Programmübersicht");
 
-                    Console.WriteLine("------------------------------------------------------------");
+                    Console.WriteLine("------------------------------------------------------------\n\n" +
+                                      "" +
+                                      "'back' um zurück ins Hauptmenü zu kommen");
 
                     eingabe = Console.ReadLine();
 
