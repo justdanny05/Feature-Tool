@@ -69,15 +69,22 @@ namespace Feature_Tool.Untermenüs
 
                             // Überprüfen, ob die Eingabetaste gedrückt wurde
 
-                            if (key.Key != ConsoleKey.Enter)
+                            if (key.Key == ConsoleKey.Enter)
                             {
-
-                                // Den eingegebenen Zeichen mit einem Sternchen (*) ersetzen
-
+                                break;
+                            }
+                            else if (key.Key == ConsoleKey.Backspace)
+                            {
+                                if (passwort.Length > 0)
+                                {
+                                    passwort = passwort.Substring(0, passwort.Length - 1);
+                                    Console.Write("\b \b"); // Löscht das letzte angezeigte Zeichen
+                                }
+                            }
+                            else
+                            {
                                 passwort += key.KeyChar;
-
                                 Console.Write("*");
-
                             }
 
                         } while (key.Key != ConsoleKey.Enter);
@@ -101,15 +108,22 @@ namespace Feature_Tool.Untermenüs
 
                                 // Überprüfen, ob die Eingabetaste gedrückt wurde
 
-                                if (key.Key != ConsoleKey.Enter)
+                                if (key.Key == ConsoleKey.Enter)
                                 {
-
-                                    // Den eingegebenen Zeichen mit einem Sternchen (*) ersetzen
-
+                                    break;
+                                }
+                                else if (key.Key == ConsoleKey.Backspace)
+                                {
+                                    if (passwort_erneut.Length > 0)
+                                    {
+                                        passwort_erneut = passwort_erneut.Substring(0, passwort_erneut.Length - 1);
+                                        Console.Write("\b \b"); // Löscht das letzte angezeigte Zeichen
+                                    }
+                                }
+                                else
+                                {
                                     passwort_erneut += key.KeyChar;
-
                                     Console.Write("*");
-
                                 }
 
                             } while (key.Key != ConsoleKey.Enter);
