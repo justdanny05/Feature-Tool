@@ -9,6 +9,7 @@ class Hauptmenü
 
         bool schleife;
         string eingabe;
+        string adminpasswort = "1234";
 
         do
         {
@@ -104,63 +105,119 @@ class Hauptmenü
             else if (eingabe == "2")
             {
 
-                Console.Clear() ;
+                int eingabe_pw = 0;
+                bool falschePW_eingabe = false;
+
+                Console.Clear();
 
                 do
                 {
 
                     schleife = true;
 
-                    Console.WriteLine("Was wollen Sie administrieren?\n\n" +
-                                      "1. Einträge löschen\n" +
-                                      "2. Benutzerverwaltung\n"+
-                                      "3. Programmübersicht\n");
+                    Console.Write("2. Administration\n\n" +
+                                  "Passwort: ");
+                    string adminpasswort_eingabe = Console.ReadLine();
 
-                    Console.WriteLine("------------------------------------------------------------\n\n" +
-                                      "" +
-                                      "'back' um zurück ins Hauptmenü zu kommen.\n");
-
-                    eingabe = Console.ReadLine();
-
-                    if (eingabe == "1")
+                    if (adminpasswort_eingabe == adminpasswort)
                     {
 
                         Console.Clear();
-                        Administration.Einträge_löschen();
 
-                    }
+                        do
+                        {
 
-                    else if (eingabe == "2")
-                    {
+                            schleife = true;
 
-                    }
+                            Console.WriteLine("Was wollen Sie administrieren?\n\n" +
+                                              "1. Einträge löschen\n" +
+                                              "2. Benutzerverwaltung\n" +
+                                              "3. Programmübersicht\n");
 
-                    else if (eingabe == "3")
-                    {
+                            Console.WriteLine("------------------------------------------------------------\n\n" +
+                                              "" +
+                                              "'back' um zurück ins Hauptmenü zu kommen.\n");
 
-                        Console.Clear();
-                        Administration.Programmübersicht();
+                            eingabe = Console.ReadLine();
 
-                    }
+                            if (eingabe == "1")
+                            {
 
-                    else if (eingabe == "back")
-                    {
+                                Console.Clear();
+                                Administration.Einträge_löschen();
 
-                        schleife = false;
+                            }
+
+                            else if (eingabe == "2")
+                            {
+
+                                Console.Clear();
+                                Administration.Benutzerverwaltung();
+
+                            }
+
+                            else if (eingabe == "3")
+                            {
+
+                                Console.Clear();
+                                Administration.Programmübersicht();
+
+                            }
+
+                            else if (eingabe == "back")
+                            {
+
+                                Main();
+
+                            }
+
+                            else
+                            {
+
+                                // Falsche Eingabe
+
+                                Console.WriteLine("'" + eingabe + "' funktioniert nicht.\n" +
+                                                  "Versuche Sie es erneut.");
+
+                            }
+
+                        } while (schleife);
 
                     }
 
                     else
                     {
 
-                        // Falsche Eingabe
-                                                
-                        Console.WriteLine("'" + eingabe + "' funktioniert nicht.\n" +
-                                          "Versuche Sie es erneut.");
+                        // Falsches Password
 
+                        eingabe_pw++;
+
+                        if (eingabe_pw >= 3)
+                        {
+
+                            falschePW_eingabe = true;
+
+                            Console.WriteLine("Passwort zu oft falsch eingegeben.\n" +
+                                              "Zurück zum Hauptmenü.");
+
+                            Console.ReadKey();
+
+                        }
+
+                        else
+                        {
+
+                            schleife = false;
+
+                            Console.WriteLine("Das war leider falsch...\n" +
+                                              "Versuchen Sie es erneut.");
+                            Console.ReadKey();
+                            Console.Clear();
+
+                        }
                     }
 
-                } while (schleife);
+                } while (!schleife && !falschePW_eingabe);
 
                 schleife = true;            // Um Programmschleife nicht zu durchbrechen
 
