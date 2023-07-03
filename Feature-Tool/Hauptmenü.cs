@@ -24,51 +24,80 @@ class Hauptmenü
                                   "██║░╚═╝░██║███████╗██║░╚███║╚██████╔╝\r\n" +
                                   "╚═╝░░░░░╚═╝╚══════╝╚═╝░░╚══╝░╚═════╝░\n\n");
             
-            Console.WriteLine("1. Log-In \t 2. Administration\n\n" +
-                              "-----------------------------------\n\n" +
-                              "exit = Programm schließen\n\n");
+            Console.WriteLine("1. Log-In   \t  2. Administration\n\n" +
+                              "------------------------------------\n\n" +
+                              "'exit' um das Programm zu schließen\n\n");
 
             eingabe = Console.ReadLine();
 
             if (eingabe == "1")
             {
 
-                Console.Clear();
-
-                Console.WriteLine("\t\tLog-In\n" +
-                                  "----------------------------------------------\n");
-
-                Console.WriteLine("Was wollen Sie tun?\n\n" +
-                                  "1. Registrieren\n" +
-                                  "2. Anmelden\n");
-
-                Console.WriteLine("----------------------------------------------\n");
-
-
-                eingabe = Console.ReadLine();
-
-                if (eingabe == "1" | eingabe == "2")
+                do
                 {
 
-                    int ieingabe = int.Parse(eingabe);
+                    schleife = true;
 
-                    if (ieingabe == 1)
+                    Console.Clear();
+
+                    Console.WriteLine("\t\tLog-In\n" +
+                                      "----------------------------------------------\n");
+
+                    Console.WriteLine("Was wollen Sie tun?\n\n" +
+                                      "1. Registrieren\n" +
+                                      "2. Anmelden\n");
+
+                    Console.WriteLine("----------------------------------------------\n\n" +
+                                      "" +
+                                      "'back' um zurück ins Hauptmenü zu kommen.");
+
+
+                    eingabe = Console.ReadLine();
+
+                    if (eingabe == "1" | eingabe == "2")
                     {
 
-                        Console.Clear();
-                        Log_In.Registrieren();
+                        int ieingabe = int.Parse(eingabe);
+
+                        if (ieingabe == 1)
+                        {
+
+                            Console.Clear();
+                            Log_In.Registrieren();
+
+                        }
+
+                        else if (ieingabe == 2)
+                        {
+
+                            Console.Clear();
+                            Log_In.Anmelden();
+
+                        }
 
                     }
 
-                    else if (ieingabe == 2)
+                    else if (eingabe == "back")
                     {
 
-                        Console.Clear();
-                        Log_In.Anmelden();
+                        schleife = false;
 
                     }
 
-                }
+                    else
+                    {
+
+                        // Falsche Eingabe
+
+
+                        Console.WriteLine(eingabe + " ist eine falsche Eingabe\n" +
+                            "Versuche es mit '1', '2' oder 'back'.");
+
+                    }
+
+                } while(schleife);
+
+                schleife = true;
 
             }
 
@@ -85,9 +114,11 @@ class Hauptmenü
                     Console.WriteLine("Was wollen Sie administrieren?\n\n" +
                                       "1. Einträge löschen\n" +
                                       "2. Benutzerverwaltung\n"+
-                                      "3. Programmübersicht");
+                                      "3. Programmübersicht\n");
 
-                    Console.WriteLine("------------------------------------------------------------");
+                    Console.WriteLine("------------------------------------------------------------\n\n" +
+                                      "" +
+                                      "'back' um zurück ins Hauptmenü zu kommen.\n");
 
                     eingabe = Console.ReadLine();
 
@@ -115,19 +146,26 @@ class Hauptmenü
 
                     }
 
+                    else if (eingabe == "back")
+                    {
+
+                        schleife = false;
+
+                    }
+
                     else
                     {
 
                         // Falsche Eingabe
-
-                        schleife = false;
-
+                                                
                         Console.WriteLine("'" + eingabe + "' funktioniert nicht.\n" +
-                                          "Versuche Sie es erneut");
+                                          "Versuche Sie es erneut.");
 
                     }
 
-                } while (!schleife);
+                } while (schleife);
+
+                schleife = true;            // Um Programmschleife nicht zu durchbrechen
 
             }
 
