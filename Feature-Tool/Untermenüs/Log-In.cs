@@ -50,7 +50,8 @@ namespace Feature_Tool.Untermenüs
                         while (count > 0)
                         {
                             Console.WriteLine("Der angegebene Name: '" + name + "' existiert bereits.\n" +
-                                              "Bitte gib einen anderen Namen ein.\n");
+                                              "Bitte versuche es mit einem anderen Namen.\n");
+
                             Console.Write("Bitte gib deinen Namen ein: ");
                             name = Console.ReadLine();
 
@@ -169,7 +170,7 @@ namespace Feature_Tool.Untermenüs
                                 using (MySqlDataReader reader = selectCommand.ExecuteReader())
                                 {
 
-                                    if (reader.Read())
+                                    if (!reader.HasRows)
                                     {
 
                                         Console.WriteLine();
