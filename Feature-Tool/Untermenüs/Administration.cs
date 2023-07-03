@@ -367,6 +367,13 @@ namespace Feature_Tool.Untermenüs
 
                 }
 
+                else if (eingabe == "back")
+                {
+
+                    schleife = true;
+
+                }
+
                 else
                 {
 
