@@ -133,9 +133,6 @@ class Hauptmenü
                     else if (eingabe == "2")
                     {
 
-                        Console.Clear();
-                        Administration.Benutzerverwaltung();
-
                     }
 
                     else if (eingabe == "3")
