@@ -241,7 +241,8 @@ namespace Feature_Tool.Untermenüs
 
                 Console.WriteLine("Was wollen Sie tun?\n");
                 Console.WriteLine("1. Passwort zurücksetzen\n" +
-                                  "2. Namen zurücksetzen");
+                                  "2. Namen zurücksetzen\n\n" +
+                                  "'back' um zurück zu gehen");
 
                 eingabe = Console.ReadLine();
 
