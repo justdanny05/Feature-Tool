@@ -226,6 +226,8 @@ class Hauptmenü
             else if (eingabe == "exit")
             {
 
+                Console.WriteLine("Das Programm wurde beendet\n\n");
+
                 Environment.Exit(0);            //Programm beenden
 
             } 
