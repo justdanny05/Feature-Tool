@@ -126,6 +126,8 @@ class Hauptmenü
                     if (adminpasswort_eingabe == adminpasswort)
                     {
 
+                        Console.Clear();
+
                         do
                         {
 
