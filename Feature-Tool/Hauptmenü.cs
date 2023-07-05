@@ -124,12 +124,12 @@ class Hauptmenü
                     string adminpasswort_eingabe = Console.ReadLine();
 
                     if (adminpasswort_eingabe == adminpasswort)
-                    {
-
-                        Console.Clear();
+                    {                                               
 
                         do
                         {
+
+                            Console.Clear();
 
                             schleife = true;
 

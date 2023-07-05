@@ -447,7 +447,9 @@ namespace Feature_Tool.Untermenüs
 
                                 }
 
-                            }                                                      
+                            }
+
+                            Console.WriteLine();
 
                         }
 
