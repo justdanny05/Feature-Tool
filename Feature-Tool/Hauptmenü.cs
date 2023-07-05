@@ -50,7 +50,7 @@ class Hauptmenü
 
                     Console.WriteLine("----------------------------------------------\n\n" +
                                       "" +
-                                      "'back' um zurück ins Hauptmenü zu kommen.");
+                                      "'back' um zurück ins Hauptmenü zu kommen.\n\n");
 
 
                     eingabe = Console.ReadLine();
@@ -136,7 +136,7 @@ class Hauptmenü
 
                             Console.WriteLine("------------------------------------------------------------\n\n" +
                                               "" +
-                                              "'back' um zurück ins Hauptmenü zu kommen.\n");
+                                              "'back' um zurück ins Hauptmenü zu kommen.\n\n");
 
                             eingabe = Console.ReadLine();
 

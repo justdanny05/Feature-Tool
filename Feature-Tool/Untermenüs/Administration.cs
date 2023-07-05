@@ -52,7 +52,9 @@ namespace Feature_Tool.Untermenüs
                                 if (!reader.HasRows)
                                 {
 
+                                    Console.WriteLine();
                                     Console.WriteLine("LEER");
+                                    Console.WriteLine();
 
                                 }
 
@@ -104,14 +106,14 @@ namespace Feature_Tool.Untermenüs
 
                                 schleife = true;
 
-                                Console.WriteLine("Möchten Sie die Einträge nach der ID löschen oder alle Einträge komplett löschen? (id/k)");
+                                Console.WriteLine("Möchten Sie die Einträge nach der ID löschen oder alle Einträge komplett löschen? (id/k)\n");
 
                                 string deleteOption = Console.ReadLine();
 
                                 if (deleteOption.ToLower() == "id")
                                 {
 
-                                    Console.WriteLine("Bitte geben Sie die ID des Eintrags ein, den Sie löschen möchten:");
+                                    Console.Write("Bitte geben Sie die ID des Eintrags ein, den Sie löschen möchten: ");
 
                                     int id = int.Parse(Console.ReadLine());
 
@@ -145,7 +147,7 @@ namespace Feature_Tool.Untermenüs
 
                                     }
 
-                                    Console.WriteLine("Wollen Sie noch einen Eintrag löschen? (ja/nein)");
+                                    Console.WriteLine("Wollen Sie noch einen Eintrag löschen? (ja/nein)\n");
 
                                     eingabe = Console.ReadLine();
 
@@ -190,7 +192,7 @@ namespace Feature_Tool.Untermenüs
 
                                     schleife = false;
 
-                                    Console.WriteLine("Ungültige Option. Bitte wählen Sie 'id' oder 'k'.");
+                                    Console.WriteLine("Ungültige Option. Bitte wählen Sie 'id' oder 'k'.\n");
 
                                 }
 
@@ -242,7 +244,8 @@ namespace Feature_Tool.Untermenüs
                 Console.WriteLine("Was wollen Sie tun?\n");
                 Console.WriteLine("1. Passwort zurücksetzen\n" +
                                   "2. Namen zurücksetzen\n\n" +
-                                  "'back' um zurück zu gehen");
+                                  "" +
+                                  "'back' um zurück zu gehen\n\n");
 
                 eingabe = Console.ReadLine();
 
@@ -400,7 +403,8 @@ namespace Feature_Tool.Untermenüs
 
             // Verbindung zur Datenbank herstellen
 
-            Console.WriteLine("Datenbank:");
+            Console.WriteLine("Datenbank:\n");
+
             Console.WriteLine("--------------------------------\n\n");
 
             using (MySqlConnection connection = new MySqlConnection(connectionString))
@@ -424,7 +428,9 @@ namespace Feature_Tool.Untermenüs
                             if (!reader.HasRows)
                             {
 
+                                Console.WriteLine();
                                 Console.WriteLine("LEER");
+                                Console.WriteLine();
 
                             }
                             else

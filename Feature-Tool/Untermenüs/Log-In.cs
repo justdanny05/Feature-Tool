@@ -146,7 +146,7 @@ namespace Feature_Tool.Untermenüs
 
                                 Console.WriteLine();
                                 Console.WriteLine("Das Passwort stimmt nicht überein...\n" +
-                                                  "Bitte erneut versuchen");
+                                                  "Bitte erneut versuchen\n");
 
                             }
 
@@ -172,7 +172,7 @@ namespace Feature_Tool.Untermenüs
                             }
 
                             Console.WriteLine();
-                            Console.WriteLine("Daten erfolgreich gespeichert!");
+                            Console.WriteLine("Daten erfolgreich gespeichert!\n");
 
                             // SQL-Abfrage erstellen
 
@@ -321,7 +321,7 @@ namespace Feature_Tool.Untermenüs
 
                                 Console.WriteLine();
                                 Console.WriteLine("Ungültiger Benutzername,\n" +
-                                                  "du bist noch nicht registriert.");
+                                                  "du bist noch nicht registriert.\n");
 
                                 Console.WriteLine();
                                 Console.Write("Möchtest du dich registrieren? (ja/nein): ");
