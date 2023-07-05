@@ -18,13 +18,17 @@ class Hauptmenü
 
             Console.Clear();
 
-            Console.WriteLine("\r\n███╗░░░███╗███████╗███╗░░██╗██╗░░░██╗\r\n" +
-                                  "████╗░████║██╔════╝████╗░██║██║░░░██║\r\n" +
-                                  "██╔████╔██║█████╗░░██╔██╗██║██║░░░██║\r\n" +
-                                  "██║╚██╔╝██║██╔══╝░░██║╚████║██║░░░██║\r\n" +
-                                  "██║░╚═╝░██║███████╗██║░╚███║╚██████╔╝\r\n" +
-                                  "╚═╝░░░░░╚═╝╚══════╝╚═╝░░╚══╝░╚═════╝░\n\n");
-            
+            Console.ForegroundColor = ConsoleColor.DarkGray;
+
+            Console.WriteLine("                                     ");
+            Console.WriteLine("███╗░░░███╗███████╗███╗░░██╗██╗░░░██╗\r\n" +
+                              "████╗░████║██╔════╝████╗░██║██║░░░██║\r\n" +
+                              "██╔████╔██║█████╗░░██╔██╗██║██║░░░██║\r\n" +
+                              "██║╚██╔╝██║██╔══╝░░██║╚████║██║░░░██║\r\n" +
+                              "██║░╚═╝░██║███████╗██║░╚███║╚██████╔╝\r\n" +
+                              "╚═╝░░░░░╚═╝╚══════╝╚═╝░░╚══╝░╚═════╝░");
+            Console.WriteLine("                                     \n");
+
             Console.WriteLine("1. Log-In   \t  2. Administration\n\n" +
                               "------------------------------------\n\n" +
                               "'exit' um das Programm zu schließen\n\n");
@@ -219,16 +223,17 @@ class Hauptmenü
 
                 } while (!schleife && !falschePW_eingabe);
 
-                schleife = true;            // Um Programmschleife nicht zu durchbrechen
+                schleife = true;                                          // Um Programmschleife nicht zu durchbrechen
 
             }
 
             else if (eingabe == "exit")
             {
 
-                Console.WriteLine("Das Programm wurde beendet\n\n");
+                Console.Clear();
 
-                Environment.Exit(0);            //Programm beenden
+                Console.WriteLine("Das Programm wurde beendet\n");
+                Environment.Exit(0);                                    //Programm beenden
 
             } 
 
