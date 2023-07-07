@@ -174,48 +174,9 @@ namespace Feature_Tool.Untermenüs
                             Console.WriteLine();
                             Console.WriteLine("Daten erfolgreich gespeichert!\n");
 
-                            Benutzerumgebung.
-
-                            // SQL-Abfrage erstellen
-
-                            string sqlQuery = "SELECT id, name, passwort FROM Benutzer";
-
-                            using (MySqlCommand selectCommand = new MySqlCommand(sqlQuery, connection))
-                            {
-
-                                using (MySqlDataReader reader = selectCommand.ExecuteReader())
-                                {
-
-                                    if (!reader.HasRows)
-                                    {
-
-                                        Console.WriteLine();
-                                        Console.WriteLine("LEER");
-                                        Console.WriteLine();
-
-                                    }
-
-                                    else
-                                    {
-
-                                        while (reader.Read())
-                                        {
-
-                                            int id = reader.GetInt32(0);                    // Index 0 entspricht der ID-Spalte
-                                            string userName = reader.GetString(1);          // Index 1 entspricht der Name-Spalte
-                                            string password = reader.GetString(2);          // Index 2 entspricht der Passwort-Spalte
-
-                                            Console.WriteLine($"ID: {id}, Name: {userName}, Passwort: {password}");
-
-                                        }
+                            Benutzerumgebung.Verwaltung(name); // Übergang zur Benutzerumgebung
 
                                     }                                   
-
-                                }
-
-                            }
-
-                        }
 
                         catch (Exception ex)
                         {
