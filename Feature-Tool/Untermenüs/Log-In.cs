@@ -176,7 +176,7 @@ namespace Feature_Tool.Untermenüs
 
                             Benutzerumgebung.Verwaltung(name); // Übergang zur Benutzerumgebung
 
-                                    }                                   
+                        }
 
                         catch (Exception ex)
                         {
@@ -276,6 +276,8 @@ namespace Feature_Tool.Untermenüs
 
                                 Console.WriteLine();
                                 Console.WriteLine("Anmeldung erfolgreich!");
+
+                                Benutzerumgebung.Verwaltung(name); // Übergang zur Benutzerumgebung
 
                             }
 
