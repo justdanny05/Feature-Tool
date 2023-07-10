@@ -9,6 +9,7 @@ namespace Feature_Tool
     {
         private static string aktuellerBenutzer;
 
+
         internal static void Verwaltung(string name)
         {
 
@@ -78,7 +79,7 @@ namespace Feature_Tool
         internal static void TakeNote()
         {
 
-            string tableName = "Notizen";
+            string tableName = "Benutzer";
             string connectionString = "Server=localhost;Port=3306;Database=LogIn;Uid=Danny;Pwd=DanDan-05K;";
 
             Console.Write("Geben Sie Ihre Notiz ein (max. 255 Zeichen): ");
@@ -94,7 +95,7 @@ namespace Feature_Tool
                     connection.Open();
 
                     // Erstelle eine parameterisierte SQL-Abfrage, um die Notiz in die Datenbank einzufügen
-                    string query = "INSERT INTO " + tableName + " (aktuellerBenutzer, note) VALUES (@name, @note)";
+                    string query = "INSERT INTO " + tableName + " (name, note) VALUES (@name, @note)";
 
                     using (MySqlCommand command = new MySqlCommand(query, connection))
                     {
@@ -125,7 +126,7 @@ namespace Feature_Tool
         internal static void ReadNotesForUser()
         {
 
-            string tableName = "Notizen";
+            string tableName = "Benutzer";
             string connectionString = "Server=localhost;Port=3306;Database=LogIn;Uid=Danny;Pwd=DanDan-05K;";
 
             using (MySqlConnection connection = new MySqlConnection(connectionString))
@@ -165,7 +166,7 @@ namespace Feature_Tool
                             while (reader.Read())
                             {
 
-                                string note = reader.GetString("note");
+                                string note = reader.GetString(0);
                                 Console.WriteLine("- " + note);
 
                             }
