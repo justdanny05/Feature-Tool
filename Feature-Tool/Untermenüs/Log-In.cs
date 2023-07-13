@@ -174,8 +174,6 @@ namespace Feature_Tool.Untermenüs
                             Console.WriteLine();
                             Console.WriteLine("Daten erfolgreich gespeichert!\n");
 
-                            Benutzerumgebung.
-
                             // SQL-Abfrage erstellen
 
                             string sqlQuery = "SELECT id, name, passwort FROM Benutzer";
